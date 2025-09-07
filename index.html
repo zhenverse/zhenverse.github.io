@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Professional Portfolio</title>
+    <title>ZhenVerse - Professional Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Computer+Modern+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --primary-color: #1a1a1a;
+            --secondary-color: #5ca5d6;
             --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --text-color: #e0e0e0;
+            --text-secondary: #bababa;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --light-bg: #2a2a2a;
+            --border-color: #333;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+            --glow: 0 0 20px rgba(52, 152, 219, 0.3);
         }
         
         * {
@@ -23,9 +28,10 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Computer Modern Serif', 'CMU Serif', 'Times New Roman', serif;
             line-height: 1.6;
             color: var(--text-color);
+            background: var(--dark-bg);
             scroll-behavior: smooth;
         }
         
@@ -37,13 +43,15 @@
         
         /* Header */
         header {
-            background: var(--white);
-            box-shadow: var(--shadow);
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-color);
         }
         
         nav {
@@ -54,12 +62,14 @@
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
         }
         
         .nav-links {
+            font-size: 1.5rem;
             display: flex;
             list-style: none;
             gap: 2rem;
@@ -86,6 +96,7 @@
             left: 0;
             background: var(--secondary-color);
             transition: width 0.3s ease;
+            box-shadow: 0 0 5px var(--secondary-color);
         }
         
         .nav-links a:hover::after {
@@ -94,34 +105,54 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: var(--text-color);
             padding: 120px 0 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(231, 76, 60, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            text-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
         }
         
         .hero-content .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            color: var(--secondary-color);
             animation: fadeInUp 1s ease 0.2s both;
         }
         
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             max-width: 600px;
             margin: 0 auto 2rem;
-            opacity: 0.8;
+            color: var(--text-secondary);
             animation: fadeInUp 1s ease 0.4s both;
         }
         
         .btn-group {
+            font-size: 1.2rem;
             display: flex;
             gap: 1rem;
             justify-content: center;
@@ -144,18 +175,25 @@
         
         .btn-primary {
             background: var(--accent-color);
-            color: var(--white);
+            color: var(--text-color);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.3);
         }
         
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
+            color: var(--text-color);
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.2);
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--secondary-color);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
         }
         
         /* Sections */
@@ -169,26 +207,26 @@
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
+            font-size: 3rem;
+            color: var(--text-color);
             margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
         }
         
         .section-title p {
-            font-size: 1.1rem;
-            color: #666;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
         
         /* About */
         .about {
+            font-size: 1.8rem;
             background: var(--light-bg);
         }
         
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
             gap: 3rem;
             align-items: center;
         }
@@ -203,19 +241,21 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: var(--shadow);
-            border: 5px solid var(--white);
+            border: 5px solid var(--secondary-color);
+            filter: brightness(1.1);
         }
         
         .about-text h3 {
             font-size: 1.8rem;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             margin-bottom: 1rem;
         }
         
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1.5rem;
             line-height: 1.8;
+            color: var(--text-secondary);
         }
         
         /* Skills */
@@ -226,36 +266,44 @@
         }
         
         .skill-category {
-            background: var(--white);
+            background: var(--card-bg);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
         
         .skill-category:hover {
             transform: translateY(-5px);
+            box-shadow: var(--glow);
+            border-color: var(--secondary-color);
         }
         
         .skill-category i {
             font-size: 3rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.5));
         }
         
         .skill-category h3 {
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            color: var(--text-color);
             margin-bottom: 1rem;
         }
         
         .skill-list {
+            font-size: 1.2rem;
             list-style: none;
         }
         
         .skill-list li {
+            font-size: 1.2rem;
             padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
         }
         
         .skill-list li:last-child {
@@ -264,6 +312,7 @@
         
         /* Projects */
         .projects {
+            font-size: 1.2rem;
             background: var(--light-bg);
         }
         
@@ -274,15 +323,18 @@
         }
         
         .project-card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
         
         .project-card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--glow);
+            border-color: var(--secondary-color);
         }
         
         .project-image {
@@ -291,7 +343,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
+            color: var(--text-color);
             font-size: 3rem;
         }
         
@@ -300,12 +352,12 @@
         }
         
         .project-content h3 {
-            color: var(--primary-color);
+            color: var(--text-color);
             margin-bottom: 1rem;
         }
         
         .project-content p {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
         
@@ -318,11 +370,12 @@
         
         .tag {
             background: var(--light-bg);
-            color: var(--primary-color);
+            color: var(--secondary-color);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             font-weight: 500;
+            border: 1px solid var(--border-color);
         }
         
         .project-links {
@@ -337,21 +390,23 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: color 0.3s ease;
         }
         
         .project-links a:hover {
-            color: var(--primary-color);
+            color: var(--accent-color);
         }
         
         /* Contact */
         .contact {
+            font-size: 1.2rem;
             background: var(--primary-color);
-            color: var(--white);
+            color: var(--text-color);
         }
         
         .contact .section-title h2,
         .contact .section-title p {
-            color: var(--white);
+            color: var(--text-color);
         }
         
         .contact-content {
@@ -363,7 +418,7 @@
         
         .contact-info h3 {
             margin-bottom: 2rem;
-            color: var(--white);
+            color: var(--text-color);
         }
         
         .contact-item {
@@ -382,17 +437,19 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
         }
         
         .contact-form {
-            background: var(--white);
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
         }
         
         .contact-form h3 {
-            color: var(--primary-color);
+            color: var(--text-color);
             margin-bottom: 2rem;
         }
         
@@ -403,7 +460,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--primary-color);
+            color: var(--text-color);
             font-weight: 500;
         }
         
@@ -411,9 +468,11 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e1e1e1;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
-            font-family: inherit;
+            font-family: 'Computer Modern Serif', 'CMU Serif', 'Times New Roman', serif;
+            background: var(--dark-bg);
+            color: var(--text-color);
             transition: border-color 0.3s ease;
         }
         
@@ -421,6 +480,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
         }
         
         .form-group textarea {
@@ -430,11 +490,11 @@
         
         /* Footer */
         footer {
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--dark-bg);
+            color: var(--text-color);
             text-align: center;
             padding: 2rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid var(--border-color);
         }
         
         .social-links {
@@ -448,18 +508,20 @@
             width: 50px;
             height: 50px;
             background: var(--secondary-color);
-            color: var(--white);
+            color: var(--text-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
         }
         
         .social-links a:hover {
             background: var(--accent-color);
             transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
         }
         
         /* Animations */
@@ -512,9 +574,10 @@
         
         .scroll-progress {
             height: 100%;
-            background: var(--secondary-color);
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
             width: 0%;
             transition: width 0.1s ease;
+            box-shadow: 0 0 10px var(--secondary-color);
         }
     </style>
 </head>
@@ -527,13 +590,13 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">Your Name</div>
+            <div class="logo">ZhenVerse</div>
             <ul class="nav-links">
-                <li><a href="#home">首頁</a></li>
-                <li><a href="#about">關於我</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#projects">作品集</a></li>
-                <li><a href="#contact">聯絡我</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -542,17 +605,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Hello, I'm Your Name</h1>
-                <p class="subtitle">專業的前端開發工程師 & UI/UX 設計師</p>
-                <p>我專注於創建優雅、實用且具有影響力的數位體驗。擁有豐富的網頁開發經驗，致力於將創意轉化為現實。</p>
+                <h1>Hello, I'm ZhenVerse</h1>
+                <p class="subtitle">Student at NTU CSIE</p>
+                <p>Passionate about Computer Science and Mathematics, dedicated to mastering fundamental concepts and expanding my knowledge in these areas.</p>
                 <div class="btn-group">
-                    <a href="#projects" class="btn btn-primary">
+                    <a href="#projects" class="btn btn-secondary">
                         <i class="fas fa-eye"></i>
-                        查看作品
+                        View My Projects
                     </a>
                     <a href="#contact" class="btn btn-secondary">
                         <i class="fas fa-envelope"></i>
-                        聯絡我
+                        Contact Me
                     </a>
                 </div>
             </div>
@@ -563,18 +626,19 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>關於我</h2>
-                <p>了解我的背景、經驗與熱忱</p>
+                <h2>About Me</h2>
+                <!-- <p>Learn about my background, experience, and passion.</p> -->
             </div>
             <div class="about-content">
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/300x300/3498db/ffffff?text=Your+Photo" alt="Your Name">
-                </div>
+                <!-- <div class="about-image">
+                    <img src="https://via.placeholder.com/300x300/3498db/ffffff?text=Your+Photo" alt="ZhenVerse">
+                </div> -->
                 <div class="about-text">
-                    <h3>創新思維，專業執行</h3>
-                    <p>我是一名充滿熱忱的前端開發工程師，擁有超過5年的網頁開發經驗。專精於現代化的前端技術棧，包括React、Vue.js、以及最新的CSS框架。</p>
-                    <p>我相信好的設計不僅要美觀，更要實用。我的目標是創造既能滿足用戶需求，又能為企業帶來價值的數位解決方案。每個專案對我來說都是一次學習和創新的機會。</p>
-                    <p>除了技術能力，我也重視團隊合作和溝通。我喜歡與設計師、後端工程師以及產品經理協作，共同打造出色的產品。</p>
+                    <h3></h3>
+                    <p>Hi, I’m ZhenVerse. Currently, I’m studying Computer Science at National Taiwan University. I’m passionate about exploring how technology can solve real-world problems and create meaningful impact. My interests span across software development, algorithms, and emerging fields like artificial intelligence and data science.</p>
+                    <p>I also have a strong enthusiasm for mathematics, which not only strengthens my foundation in computer science but also fuels my curiosity to tackle complex problems.</p>
+                    <p>Beyond academics, I enjoy building side projects that challenge me to learn new skills and apply what I’ve studied in creative ways. Outside of technology, I’m fascinated by Chinese classical poetry and even create some works of my own, as a way to balance logic with creativity.</p>
+                    <p>I value collaboration, curiosity, and continuous learning, and I’m always excited to connect with people who share similar passions in tech, math, and culture.</p>
                 </div>
             </div>
         </div>
@@ -584,52 +648,55 @@
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-title">
-                <h2>專業技能</h2>
-                <p>我精通的技術領域與工具</p>
+                <h2>My Skills</h2>
+                <!-- <p>The technical fields and tools I am proficient in.</p> -->
             </div>
             <div class="skills-grid">
                 <div class="skill-category">
                     <i class="fas fa-code"></i>
-                    <h3>前端開發</h3>
+                    <h3>FE Development</h3>
                     <ul class="skill-list">
-                        <li>HTML5 / CSS3</li>
+                        <li>None</li>
+                        <!-- <li>HTML5 / CSS3</li>
                         <li>JavaScript (ES6+)</li>
                         <li>React.js / Vue.js</li>
                         <li>TypeScript</li>
-                        <li>Tailwind CSS</li>
+                        <li>Tailwind CSS</li> -->
                     </ul>
                 </div>
                 <div class="skill-category">
                     <i class="fas fa-palette"></i>
-                    <h3>設計工具</h3>
+                    <h3>Design Tools</h3>
                     <ul class="skill-list">
-                        <li>Figma</li>
+                        <li>None</li>
+                        <!-- <li>Figma</li>
                         <li>Adobe XD</li>
                         <li>Photoshop</li>
                         <li>Illustrator</li>
-                        <li>Sketch</li>
+                        <li>Sketch</li> -->
                     </ul>
                 </div>
                 <div class="skill-category">
                     <i class="fas fa-tools"></i>
-                    <h3>開發工具</h3>
+                    <h3>Development Tools</h3>
                     <ul class="skill-list">
                         <li>Git / GitHub</li>
-                        <li>Webpack / Vite</li>
-                        <li>Node.js</li>
-                        <li>Docker</li>
                         <li>VS Code</li>
+                        <!-- <li>Webpack / Vite</li>
+                        <li>Node.js</li>
+                        <li>Docker</li> -->
                     </ul>
                 </div>
                 <div class="skill-category">
                     <i class="fas fa-mobile-alt"></i>
-                    <h3>其他專長</h3>
+                    <h3>Others</h3>
                     <ul class="skill-list">
-                        <li>響應式設計</li>
+                        <li>None</li>
+                        <!-- <li>響應式設計</li>
                         <li>性能優化</li>
                         <li>SEO優化</li>
                         <li>無障礙設計</li>
-                        <li>敏捷開發</li>
+                        <li>敏捷開發</li> -->
                     </ul>
                 </div>
             </div>
@@ -640,10 +707,13 @@
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-title">
-                <h2>作品集</h2>
-                <p>精選專案展示我的技術實力與創意思維</p>
+                <h2>My Projects</h2>
+                <!-- <p>Selected projects to showcase my technical prowess and creative thinking.</p> -->
             </div>
-            <div class="projects-grid">
+            <div class="project-content">
+                <p>None. Failure.</p>
+            </div>
+            <!-- <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
                         <i class="fas fa-shopping-cart"></i>
@@ -703,7 +773,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -711,46 +781,46 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>聯絡我</h2>
-                <p>讓我們討論您的下一個專案</p>
+                <h2>Contact Me</h2>
+                <!-- <p>Let's discuss your next project.</p> -->
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>聯絡資訊</h3>
+                    <h3>Contact Information</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>your.email@example.com</p>
+                            <p>mickeychen6789@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <!-- <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>電話</h4>
+                            <h4>Phone</h4>
                             <p>+886 912 345 678</p>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>地址</h4>
-                            <p>台北市, 台灣</p>
+                            <h4>Address</h4>
+                            <p>Taipei, Taiwan</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <h4>工作時間</h4>
-                            <p>週一至週五 9:00 - 18:00</p>
+                            <h4>Work Time</h4>
+                            <p>24/7 (365 days, non-stop)</p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <h3>發送訊息</h3>
+                    <h3>Send a Message</h3>
                     <form>
                         <div class="form-group">
-                            <label for="name">姓名</label>
+                            <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
@@ -758,16 +828,16 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">主題</label>
+                            <label for="subject">Topic</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">訊息內容</label>
+                            <label for="message">Content</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-paper-plane"></i>
-                            發送訊息
+                            Send
                         </button>
                     </form>
                 </div>
@@ -785,7 +855,7 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-medium"></i></a>
             </div>
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 ZhenVerse. All rights reserved.</p>
         </div>
     </footer>
 
@@ -814,21 +884,21 @@
         });
 
         // Header background on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = '#ffffff';
-                header.style.backdropFilter = 'none';
-            }
-        });
+        // window.addEventListener('scroll', () => {
+        //     const header = document.querySelector('header');
+        //     if (window.scrollY > 100) {
+        //         header.style.background = 'rgba(255, 255, 255, 0.95)';
+        //         header.style.backdropFilter = 'blur(10px)';
+        //     } else {
+        //         header.style.background = '#ffffff';
+        //         header.style.backdropFilter = 'none';
+        //     }
+        // });
 
         // Form submission
         document.querySelector('.contact-form form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('感謝您的訊息！我會盡快回覆您。');
+            alert('Thank you for your message! I will get back to you as soon as possible.');
             this.reset();
         });
 

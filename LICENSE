@@ -1,0 +1,19 @@
+Copyright (c) 2026 Zhenverse
+
+This repository contains a mix of software source code and personal content. The distinct licensing terms for each are outlined below:
+
+=== 1. Personal Content (All Rights Reserved) ===
+The following directories and their contents are the property of the author and may not be reproduced, distributed, copied, or modified without explicit written permission (excluding any third-party open-source assets contained therein):
+- /src/content/       (All blog posts, articles, and data collections)
+- /public/            (Personal photographs, original graphics, and custom branding assets)
+
+All text content, blog posts, and personal data presented on the generated website are similarly restricted under copyright law.
+
+=== 2. Source Code (MIT License) ===
+All other directories and files in this repository not explicitly mentioned in Section 1 (collectively, the "Software") are released under the MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice, the content restrictions in Section 1, and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,0 +1,3 @@
+The Markdown files and assets within this directory (`/src/content/posts/fuwari-examples/`) are example contents provided by the original author of the Fuwari theme (saicaca).
+
+These files are excluded from the "All Rights Reserved" personal content licensing of this repository and remain under the original MIT License of the Fuwari project. They are kept strictly as offline formatting references and are not published on the live website.
